@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using KoreanTyper;                                                  // Add KoreanTyper namespace | 네임 스페이스 추가
+using KoreanTyper;                                               
 using TMPro;
 
-//===================================================================================================================
-//  Auto Demo
-//  자동으로 글자가 입력되는 데모
-//===================================================================================================================
 public class KoreanTyperAuto2 : MonoBehaviour
 {
     [SerializeField]
@@ -22,6 +18,9 @@ public class KoreanTyperAuto2 : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI[] TestTexts;
+
+    [SerializeField]
+    Inventory inventory;
 
     [SerializeField]
     int textNumber;
@@ -47,8 +46,7 @@ public class KoreanTyperAuto2 : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    Inventory inventory;
+    
 
     public void NPC()
     {
@@ -90,9 +88,6 @@ public class KoreanTyperAuto2 : MonoBehaviour
 
     IEnumerator TypingText()
     {
-        //=======================================================================================================
-        // Initializing | 초기화
-        //=======================================================================================================
         string[] npc1Strings = new string[23]{ "우와!! 여우다! 여우! 눈처럼 하얗고 예쁜 여우!",
                                               "너가 나의 멋짐을 좀 아는 아이구나!",
                                               "응!! 나 여우 정말 좋아해! 그러니 여우씨도 좋아!",
@@ -120,13 +115,6 @@ public class KoreanTyperAuto2 : MonoBehaviour
 
         foreach (TextMeshProUGUI t in TestTexts)
             t.text = "";
-        //=======================================================================================================
-
-
-        //=======================================================================================================
-        //  Typing effect | 타이핑 효과
-        //=======================================================================================================
-
 
 
         int strTypingLength = npc1Strings[textNumber].GetTypingLength();

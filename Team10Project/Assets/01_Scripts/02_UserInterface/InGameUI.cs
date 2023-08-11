@@ -42,7 +42,7 @@ public class InGameUI : MonoBehaviour
 
     int titleNumber;
 
-
+    bool isInventoryPopup;
     bool isPausePopup;
     bool isOneClick;
 
@@ -74,7 +74,7 @@ public class InGameUI : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    bool isInventoryPopup;
+    
     void Update()
     {
         if (!isInventoryPopup && Input.GetKeyDown(KeyCode.I))

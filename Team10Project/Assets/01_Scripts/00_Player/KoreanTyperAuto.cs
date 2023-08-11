@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using KoreanTyper;                                                  // Add KoreanTyper namespace | 네임 스페이스 추가
+using KoreanTyper;                                                
 using TMPro;
 
-//===================================================================================================================
-//  Auto Demo
-//  자동으로 글자가 입력되는 데모
-//===================================================================================================================
 public class KoreanTyperAuto : MonoBehaviour
 {
     [SerializeField]
@@ -24,8 +20,10 @@ public class KoreanTyperAuto : MonoBehaviour
     TextMeshProUGUI[] TestTexts;
 
     [SerializeField]
-    int textNumber;
+    Inventory inventory;
 
+    [SerializeField]
+    int textNumber;
 
     [SerializeField]
     bool isTalking;
@@ -46,15 +44,12 @@ public class KoreanTyperAuto : MonoBehaviour
             }
         }
     }
-    [SerializeField]
-    Inventory inventory;
+    
 
     public void NPC()
     {
-        //Debug.Log($"{Input.GetKey(KeyCode.Z)} / {!isTalking}");
         if (Input.GetKeyDown(KeyCode.Z) && !isTalking)
         {
-            //Debug.Log("dd");
             if (textNumber >= 17)
             {
                 deleteObj[1].SetActive(false);
@@ -66,12 +61,10 @@ public class KoreanTyperAuto : MonoBehaviour
             }
             else
             {
-                //Debug.Log("aad");
                 deleteObj[1].SetActive(true);
                 deleteObj[0].SetActive(false);
                 texts[0].SetActive(true);
-                StartCoroutine(TypingText());
-                
+                StartCoroutine(TypingText());            
             }
         }
     }
@@ -92,9 +85,6 @@ public class KoreanTyperAuto : MonoBehaviour
 
     IEnumerator TypingText()
     {
-        //=======================================================================================================
-        // Initializing | 초기화
-        //=======================================================================================================
         string[] npc1Strings = new string[17]{ "안녕!",
                                               "헛것이 보이는 게 다른 것도 아니고 여우라니.. 나 미쳐버린 건가..",
                                               "헛것이 아니라 진짜 맞거든!",
@@ -114,14 +104,9 @@ public class KoreanTyperAuto : MonoBehaviour
                                               "우와 엄청 반짝거려! 고마워 아저씨!"
                                               };
 
+
         foreach (TextMeshProUGUI t in TestTexts)
             t.text = "";
-        //=======================================================================================================
-
-
-        //=======================================================================================================
-        //  Typing effect | 타이핑 효과
-        //=======================================================================================================
 
 
 

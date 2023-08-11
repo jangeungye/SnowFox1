@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]
-    int itemNumber;
+    
 
     [SerializeField]
     List<GameObject> items = new List<GameObject>();
@@ -20,6 +19,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     List<Image> getItemImage = new List<Image>();
 
+    [SerializeField]
+    int itemNumber;
     int getItemNumber;
 
     float fadeSpeed = 0.5f;

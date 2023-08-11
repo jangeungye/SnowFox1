@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using KoreanTyper;                                                  // Add KoreanTyper namespace | 네임 스페이스 추가
+using KoreanTyper;                                   
 using TMPro;
 
-//===================================================================================================================
-//  Auto Demo
-//  자동으로 글자가 입력되는 데모
-//===================================================================================================================
 public class KoreanTyperAuto3 : MonoBehaviour
 {
     [SerializeField]
@@ -22,6 +18,9 @@ public class KoreanTyperAuto3 : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI[] TestTexts;
+
+    [SerializeField]
+    Inventory inventory;
 
     [SerializeField]
     int textNumber;
@@ -47,10 +46,7 @@ public class KoreanTyperAuto3 : MonoBehaviour
             }
         }
     }
-
-    [SerializeField]
-    Inventory inventory;
-
+   
     public void NPC()
     {
         if (Input.GetKeyDown(KeyCode.Z) && !isTalking)
@@ -91,9 +87,6 @@ public class KoreanTyperAuto3 : MonoBehaviour
 
     IEnumerator TypingText()
     {
-        //=======================================================================================================
-        // Initializing | 초기화
-        //=======================================================================================================
         string[] npc1Strings = new string[24]{ "나 아줌마 알아! 사진에서 봤어!",
                                               "내가 떨어뜨린 가족사진을 봤나보구나..",
                                               "응! 그때의 아줌마는 활짝 웃고 있던데, 지금은 많이 아파보여.",
@@ -122,13 +115,6 @@ public class KoreanTyperAuto3 : MonoBehaviour
 
         foreach (TextMeshProUGUI t in TestTexts)
             t.text = "";
-        //=======================================================================================================
-
-
-        //=======================================================================================================
-        //  Typing effect | 타이핑 효과
-        //=======================================================================================================
-
 
 
         int strTypingLength = npc1Strings[textNumber].GetTypingLength();

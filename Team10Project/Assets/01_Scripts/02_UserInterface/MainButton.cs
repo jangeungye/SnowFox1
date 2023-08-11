@@ -5,13 +5,6 @@ using System.Collections.Generic;
 
 public class MainButon : MonoBehaviour
 {
-
-    [SerializeField]
-    GameObject[] popup;
-
-    float fixedWidth;
-    float fixedHeight;
-
     [SerializeField]
     TextMeshProUGUI fullScreenSettingText;
     [SerializeField]
@@ -28,15 +21,14 @@ public class MainButon : MonoBehaviour
 
     List<(int width, int height)> screenResolution = new List<(int width, int height)>();
 
+    float fixedWidth;
+    float fixedHeight;
+
     bool isOneClick;
 
     void Start()
     {
         StateText();       
-        popup[0].SetActive(true);
-        popup[1].SetActive(false);
-        popup[2].SetActive(false);
-        popup[3].SetActive(false);
 
         Screen.SetResolution(1920, 1080, true);
         
@@ -54,98 +46,14 @@ public class MainButon : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
     void Update()
     {
-        CoolTime();
-
         fullScreenSettingText.text = fullScreenTextList[fullScreenCount];
         resolutionSettingText.text = resolutionTextList[resolutionCount];
         soundSettingText.text = $"{soundCount}";
-        print(soundCount);
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            popup[0].SetActive(true);
-            popup[1].SetActive(false);
-            popup[2].SetActive(false);
-            popup[3].SetActive(false);
-            popup[4].SetActive(false);
-        }
-    }
-
-    public void OnStartButton()
-    {
-        popup[0].SetActive(false);
-        popup[3].SetActive(true);   
-    }
-
-    public void OnSettingButton()
-    {
-        popup[0].SetActive(false);
-        popup[1].SetActive(true);
-    }
-    public void OnKeySettingButton()
-    {
-        popup[1].SetActive(false);
-        popup[4].SetActive(true);
-    }
-    public void OnCreditButton()
-    {
-        popup[0].SetActive(false);
-        popup[2].SetActive(true);
-    }
-    public void OnExitButton()
-    {
-        Application.Quit();
-    }
-
-    float stage1Cool;
-    float stage2Cool;
-    float stage3Cool;
-
-    bool isStage1Click;
-    bool isStage2Click;
-    bool isStage3Click;
-    void CoolTime()
-    {
-        if (stage1Cool > 0)
-        {
-            stage1Cool -= Time.deltaTime;
-        }
-        else
-        {
-            stage1Cool = 0;
-            isStage1Click = false;
-        }
-
-
-    }
+    }  
     
-    public void OnStage1Button()
-    {
-        if (isStage1Click)
-        {
-            SceneManager.LoadScene("GameScene1");
-        }
-        else
-        {
-            stage1Cool = 2f;
-            isStage1Click = true;
-        }
-    }
-    public void OnStage2Button()
-    {
-        if (isStage2Click)
-            SceneManager.LoadScene("GameScene2");
-        else
-            isStage2Click = true;
-    }
-    public void OnStage3Button()
-    {
-        if (isStage3Click)
-            SceneManager.LoadScene("GameScene3");
-        else
-            isStage3Click = true;
-    }
     public void ONFullScreenButton()
     {
         if (!isOneClick)

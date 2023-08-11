@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MouseEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StartOnMouseEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     List<GameObject> images = new List<GameObject>();
